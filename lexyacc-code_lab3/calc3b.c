@@ -60,7 +60,7 @@ int ex(nodeType *p) {
 	    break;
 	case LNTWO:
 	    ex(p->opr.op[0]);
-	    printf("\lntwo\n");
+	    printf("\tntwo\n");
 	    break;
         default:
             ex(p->opr.op[0]);

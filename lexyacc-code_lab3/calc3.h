@@ -1,5 +1,5 @@
-#ifndef calc3.h
-#define calc3.h
+#ifndef CALC3_H
+#define CALC3_H
 
 typedef enum { typeCon, typeId, typeOpr } nodeEnum;
 
@@ -34,4 +34,4 @@ typedef struct nodeTypeTag {
 
 extern int sym[26];
 
-#endif
+#endif //CALC3_H

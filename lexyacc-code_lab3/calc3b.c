@@ -6,7 +6,7 @@ static int lbl;
 
 int ex(nodeType *p) {
     int lbl1, lbl2;
-
+    // printf("HEJ %d", p->con.value);
     if (!p) return 0;
     switch(p->type) {
     case typeCon:       
@@ -14,6 +14,7 @@ int ex(nodeType *p) {
         break;
     case typeId:        
         printf("\tpush\t%c\n", p->id.i + 'a'); 
+        // printf("%d ", p->type);
         break;
     case typeOpr:
         switch(p->opr.oper) {
@@ -44,7 +45,7 @@ int ex(nodeType *p) {
             break;
         case PRINT:     
             ex(p->opr.op[0]);
-            printf("\tprint\n");
+            printf("\tprint\t\n");
             break;
         case '=':       
             ex(p->opr.op[1]);
@@ -60,7 +61,7 @@ int ex(nodeType *p) {
 	    break;
 	case LNTWO:
 	    ex(p->opr.op[0]);
-	    printf("\tntwo\n");
+	    printf("\lntwo\n");
 	    break;
         default:
             ex(p->opr.op[0]);

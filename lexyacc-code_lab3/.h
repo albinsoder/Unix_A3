@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
-# define YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
+#ifndef YY_YY_LEXYACC_CODE_LAB3_H_INCLUDED
+# define YY_YY_LEXYACC_CODE_LAB3_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -103,7 +103,7 @@ union YYSTYPE
     char sIndex;                /* symbol table index */
     nodeType *nPtr;             /* node pointer */
 
-#line 107 "./lexyacc-code_lab3/y.tab.h"
+#line 107 "./lexyacc-code_lab3/.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -118,4 +118,4 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 
-#endif /* !YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED  */
+#endif /* !YY_YY_LEXYACC_CODE_LAB3_H_INCLUDED  */

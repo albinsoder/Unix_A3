@@ -9,5 +9,3 @@ while(a != b) {
 }
 print a;
 
-print a gcd b;
-

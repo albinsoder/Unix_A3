@@ -66,7 +66,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "calc3.y"
+#line 1 "./lexyacc-code_lab3/calc3.y"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -84,7 +84,7 @@ int yylex(void);
 void yyerror(char *s);
 int sym[26];                    /* symbol table */
 
-#line 88 "y.tab.c"
+#line 88 "./lexyacc-code_lab3/y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -117,8 +117,8 @@ int sym[26];                    /* symbol table */
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_YY_Y_TAB_H_INCLUDED
-# define YY_YY_Y_TAB_H_INCLUDED
+#ifndef YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
+# define YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -170,13 +170,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 19 "calc3.y"
+#line 19 "./lexyacc-code_lab3/calc3.y"
 
     int iValue;                 /* integer value */
     char sIndex;                /* symbol table index */
     nodeType *nPtr;             /* node pointer */
 
-#line 180 "y.tab.c"
+#line 180 "./lexyacc-code_lab3/y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -189,7 +189,7 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
+#endif /* !YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED  */
 
 
 
@@ -1408,181 +1408,181 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 43 "calc3.y"
+#line 43 "./lexyacc-code_lab3/calc3.y"
                                 { exit(0); }
-#line 1414 "y.tab.c"
+#line 1414 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 3:
-#line 47 "calc3.y"
+#line 47 "./lexyacc-code_lab3/calc3.y"
                                 { ex((yyvsp[0].nPtr)); freeNode((yyvsp[0].nPtr)); }
-#line 1420 "y.tab.c"
+#line 1420 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 5:
-#line 52 "calc3.y"
+#line 52 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr(';', 2, NULL, NULL); }
-#line 1426 "y.tab.c"
+#line 1426 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 6:
-#line 53 "calc3.y"
+#line 53 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = (yyvsp[-1].nPtr); }
-#line 1432 "y.tab.c"
+#line 1432 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 7:
-#line 54 "calc3.y"
+#line 54 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr(PRINT, 1, (yyvsp[-1].nPtr)); }
-#line 1438 "y.tab.c"
+#line 1438 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 8:
-#line 55 "calc3.y"
+#line 55 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr('=', 2, id((yyvsp[-3].sIndex)), (yyvsp[-1].nPtr)); }
-#line 1444 "y.tab.c"
+#line 1444 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 9:
-#line 56 "calc3.y"
+#line 56 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr(WHILE, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1450 "y.tab.c"
+#line 1450 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 10:
-#line 57 "calc3.y"
+#line 57 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr(IF, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1456 "y.tab.c"
+#line 1456 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 11:
-#line 58 "calc3.y"
+#line 58 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = opr(IF, 3, (yyvsp[-4].nPtr), (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1462 "y.tab.c"
+#line 1462 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 12:
-#line 59 "calc3.y"
+#line 59 "./lexyacc-code_lab3/calc3.y"
                                          { (yyval.nPtr) = (yyvsp[-1].nPtr); }
-#line 1468 "y.tab.c"
+#line 1468 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 13:
-#line 63 "calc3.y"
+#line 63 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = (yyvsp[0].nPtr); }
-#line 1474 "y.tab.c"
+#line 1474 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 14:
-#line 64 "calc3.y"
+#line 64 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(';', 2, (yyvsp[-1].nPtr), (yyvsp[0].nPtr)); }
-#line 1480 "y.tab.c"
+#line 1480 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 15:
-#line 68 "calc3.y"
+#line 68 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = con((yyvsp[0].iValue)); }
-#line 1486 "y.tab.c"
+#line 1486 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 16:
-#line 69 "calc3.y"
+#line 69 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = id((yyvsp[0].sIndex)); }
-#line 1492 "y.tab.c"
+#line 1492 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 17:
-#line 70 "calc3.y"
+#line 70 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(UMINUS, 1, (yyvsp[0].nPtr)); }
-#line 1498 "y.tab.c"
+#line 1498 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 18:
-#line 71 "calc3.y"
+#line 71 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(FACT, 1, (yyvsp[0].nPtr)); }
-#line 1504 "y.tab.c"
+#line 1504 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 19:
-#line 72 "calc3.y"
+#line 72 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(LNTWO, 1, (yyvsp[0].nPtr)); }
-#line 1510 "y.tab.c"
+#line 1510 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 20:
-#line 73 "calc3.y"
+#line 73 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(GCD, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1516 "y.tab.c"
+#line 1516 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 21:
-#line 74 "calc3.y"
+#line 74 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('+', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1522 "y.tab.c"
+#line 1522 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 22:
-#line 75 "calc3.y"
+#line 75 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('-', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1528 "y.tab.c"
+#line 1528 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 23:
-#line 76 "calc3.y"
+#line 76 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('*', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1534 "y.tab.c"
+#line 1534 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 24:
-#line 77 "calc3.y"
+#line 77 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('/', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1540 "y.tab.c"
+#line 1540 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 25:
-#line 78 "calc3.y"
+#line 78 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('<', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1546 "y.tab.c"
+#line 1546 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 26:
-#line 79 "calc3.y"
+#line 79 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr('>', 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1552 "y.tab.c"
+#line 1552 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 27:
-#line 80 "calc3.y"
+#line 80 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(GE, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1558 "y.tab.c"
+#line 1558 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 28:
-#line 81 "calc3.y"
+#line 81 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(LE, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1564 "y.tab.c"
+#line 1564 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 29:
-#line 82 "calc3.y"
+#line 82 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(NE, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1570 "y.tab.c"
+#line 1570 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 30:
-#line 83 "calc3.y"
+#line 83 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = opr(EQ, 2, (yyvsp[-2].nPtr), (yyvsp[0].nPtr)); }
-#line 1576 "y.tab.c"
+#line 1576 "./lexyacc-code_lab3/y.tab.c"
     break;
 
   case 31:
-#line 84 "calc3.y"
+#line 84 "./lexyacc-code_lab3/calc3.y"
                                 { (yyval.nPtr) = (yyvsp[-1].nPtr); }
-#line 1582 "y.tab.c"
+#line 1582 "./lexyacc-code_lab3/y.tab.c"
     break;
 
 
-#line 1586 "y.tab.c"
+#line 1586 "./lexyacc-code_lab3/y.tab.c"
 
       default: break;
     }
@@ -1814,7 +1814,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 87 "calc3.y"
+#line 87 "./lexyacc-code_lab3/calc3.y"
 
 
 #define SIZEOF_NODETYPE ((char *)&p->con - (char *)p)

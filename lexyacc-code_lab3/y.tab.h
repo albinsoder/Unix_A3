@@ -34,8 +34,8 @@
 /* Undocumented macros, especially those whose name start with YY_,
    are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_Y_TAB_H_INCLUDED
-# define YY_YY_Y_TAB_H_INCLUDED
+#ifndef YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
+# define YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -87,13 +87,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 19 "calc3.y"
+#line 19 "./lexyacc-code_lab3/calc3.y"
 
     int iValue;                 /* integer value */
     char sIndex;                /* symbol table index */
     nodeType *nPtr;             /* node pointer */
 
-#line 97 "y.tab.h"
+#line 97 "./lexyacc-code_lab3/y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -106,4 +106,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
+#endif /* !YY_YY_LEXYACC_CODE_LAB3_Y_TAB_H_INCLUDED  */

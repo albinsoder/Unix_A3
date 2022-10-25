@@ -1,48 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "calc3.h"
 #include "y.tab.h"
 
 static int lbl;
-static char a[5];
-static char b[5];
 
 int ex(nodeType *p) {
     int lbl1, lbl2;
 
-    // printf("HEJ %d", p->con.value);
     if (!p) return 0;
     switch(p->type) {
-    case typeCon:
+    case typeCon:       
         printf("\tpushq\t$%d\n", p->con.value); 
-
-
         break;
-    case typeId:
-        // printf("\tpush\t%c\n", p->id.i+ 'a'); 
-        if(p->id.i+'a' == 'a'){
-            printf("\tmovq\t%c, %rax\n", p->id.i+ 'a');
-            // strcpy(a, p->id.i+'a'); 
-        }
-        else {
-            printf("\tmovq\t%c, %rdx\n", p->id.i+ 'a'); 
-            // strcpy(b, p->id.i+'a'); 
-        }
-
-
-        // ex(p->id.i +'a');
+    case typeId:        
+        // printf("\tmovq\t%c, %rax\n", p->opr.op[0]->id.i + 'a');   
+        // printf("\tmovq\t%c, %rdx\n", p->opr.op[1]->id.i + 'a');   
         break;
     case typeOpr:
         switch(p->opr.oper) {
         case WHILE:
-            // printf("\tmovq\t%s, %rax\n", a); 
-            // printf("\tmovq\t%s, %rdx\n", b); 
+            printf("\tpopq\tb\n");   
+            printf("\tpopq\ta\n");   
 
             printf("L%03d:\n", lbl1 = lbl++);
-            // printf("\tmovq\t%c, %rax\n", p->id.i); 
-            // printf("\tmovq\t%c, %rdx\n", p->id.i); 
             ex(p->opr.op[0]);
-
-            printf("\t%rdx, %rax\n");
             printf("\tje\tL%03d\n", lbl2 = lbl++);
             ex(p->opr.op[1]);
             printf("\tjmp\tL%03d\n", lbl1);
@@ -52,21 +34,11 @@ int ex(nodeType *p) {
             ex(p->opr.op[0]);
             if (p->opr.nops > 2) {
                 /* if else */
-                printf("\t%rdx, %rax");
-                printf("\n\tjg\tL%03d\n", lbl1 = lbl++);
+                printf("\tjg\tL%03d\n", lbl1 = lbl++);
                 ex(p->opr.op[1]);
-                // printf("\tmovq\t%rdx, b\n");
-                // printf("\tmovq\t%rax, a\n");
-
                 printf("\tjmp\tL%03d\n", lbl2 = lbl++);
                 printf("L%03d:\n", lbl1);
-
-                // printf("\tmovq\tb, %rax\n");
-                // printf("\tmovq\ta, %rdx\n");
                 ex(p->opr.op[2]);
-
-                // printf("\tmovq\t%rax, b\n");
-                // printf("\tmovq\t%rdx, a\n");
                 printf("L%03d:\n", lbl2);
             } else {
                 /* if */
@@ -77,21 +49,19 @@ int ex(nodeType *p) {
             break;
         case PRINT:     
             ex(p->opr.op[0]);
-            printf("\tmovq\t%rax, %rdx\n");
+            printf("\tmovq\t%c, %rdx\n", p->opr.op[0]->id.i+'a');
             printf("\tpushq\t%rbp\n");
             printf("\tleaq\tformat(%rip), %rdi\n");
             printf("\tmovq\t%rdx, %rsi\n");
             printf("\txorq\t%rax,  %rax\n");
             printf("\tcall\tprintf\n");
-            printf("\tpopq\t%rbp\n");
+            printf("\tpopq\t%rbp\n");            
             break;
-        case '=':
+        case '=':       
             ex(p->opr.op[1]);
-            // printf("\tmovq\t");
-            printf("\tpopq\t%c\n", p->opr.op[0]->id.i+'a');
-            
+            // printf("\tpopq\t%c\n", p->opr.op[0]->id.i + 'a');
             break;
-        case UMINUS:
+        case UMINUS:    
             ex(p->opr.op[0]);
             printf("\tneg\n");
             break;
@@ -102,22 +72,37 @@ int ex(nodeType *p) {
 	case LNTWO:
 	    ex(p->opr.op[0]);
 	    printf("\lntwo\n");
+	    printf("\tntwo\n");
 	    break;
         default:
             ex(p->opr.op[0]);
             ex(p->opr.op[1]);
             switch(p->opr.oper) {
 	    case GCD:   printf("\tgcd\n"); break;
-            case '+':   printf("\taddq\n"); break;
-            case '-':   printf("\tsubq\n"); break; 
-            case '*':   printf("\tmulq\n"); break;
-            case '/':   printf("\tdivq\n"); break;
-            case '<':   printf("\tcmpq"); break;
-            case '>':   printf("\tcmpq"); break;
-            case GE:    printf("\tcmpq"); break;
-            case LE:    printf("\tcmpq"); break;
-            case NE:    printf("\tcmpq"); break;
-            case EQ:    printf("\tcmpq"); break;
+            case '+':   printf("\tadd\n"); break;
+            case '-':
+            printf("\tmovq\t%c, %rax\n", p->opr.op[0]->id.i + 'a');   
+            printf("\tmovq\t%c, %rdx\n", p->opr.op[1]->id.i + 'a');   
+            printf("\tsubq\t%rdx, %rax\n"); 
+            printf("\tmovq\t%rax, %c\n", p->opr.op[0]->id.i + 'a');   
+            printf("\tmovq\t%rdx, %c\n", p->opr.op[1]->id.i + 'a');   
+            break; 
+            case '*':   printf("\tmul\n"); break;
+            case '/':   printf("\tdiv\n"); break;
+            case '<':   printf("\tcompLT\n"); break;
+            case '>':
+            printf("\tmovq\t%c, %rax\n", p->opr.op[0]->id.i + 'a');   
+            printf("\tmovq\t%c, %rdx\n", p->opr.op[1]->id.i + 'a');   
+            printf("\tcmpq\t%rax, %rdx\n"); 
+            break;
+            case GE:    printf("\tcompGE\n"); break;
+            case LE:    printf("\tcompLE\n"); break;
+            case NE:
+            printf("\tmovq\t%c, %rax\n", p->opr.op[0]->id.i + 'a');   
+            printf("\tmovq\t%c, %rdx\n", p->opr.op[1]->id.i + 'a');   
+            printf("\tcmpq\t%rdx, %rax\n"); 
+            break;
+            case EQ:    printf("\tcompEQ\n"); break;
             }
         }
     }

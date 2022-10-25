@@ -1,5 +1,6 @@
+#line 2 "./lexyacc-code_lab3/lex.yy.c"
 
-#line 3 "lex.yy.c"
+#line 4 "./lexyacc-code_lab3/lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -466,14 +467,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "calc3.l"
-#line 2 "calc3.l"
+#line 1 "./lexyacc-code_lab3/calc3.l"
+#line 2 "./lexyacc-code_lab3/calc3.l"
 #include <stdlib.h>
 #include "calc3.h"
 #include "y.tab.h"
 void yyerror(char *);
-#line 476 "lex.yy.c"
-#line 477 "lex.yy.c"
+#line 477 "./lexyacc-code_lab3/lex.yy.c"
+#line 478 "./lexyacc-code_lab3/lex.yy.c"
 
 #define INITIAL 0
 
@@ -690,10 +691,10 @@ YY_DECL
 		}
 
 	{
-#line 8 "calc3.l"
+#line 8 "./lexyacc-code_lab3/calc3.l"
 
 
-#line 697 "lex.yy.c"
+#line 698 "./lexyacc-code_lab3/lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -752,7 +753,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "calc3.l"
+#line 10 "./lexyacc-code_lab3/calc3.l"
 { 
                 yylval.sIndex = *yytext - 'a';
                 return VARIABLE;
@@ -760,7 +761,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "calc3.l"
+#line 15 "./lexyacc-code_lab3/calc3.l"
 {
                 yylval.iValue = atoi(yytext);
                 return INTEGER;
@@ -768,83 +769,83 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "calc3.l"
+#line 20 "./lexyacc-code_lab3/calc3.l"
 {
                 return *yytext;
              }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 24 "calc3.l"
+#line 24 "./lexyacc-code_lab3/calc3.l"
 return GE;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 25 "calc3.l"
+#line 25 "./lexyacc-code_lab3/calc3.l"
 return LE;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "calc3.l"
+#line 26 "./lexyacc-code_lab3/calc3.l"
 return EQ;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 27 "calc3.l"
+#line 27 "./lexyacc-code_lab3/calc3.l"
 return NE;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "calc3.l"
+#line 28 "./lexyacc-code_lab3/calc3.l"
 return WHILE;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 29 "calc3.l"
+#line 29 "./lexyacc-code_lab3/calc3.l"
 return IF;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 30 "calc3.l"
+#line 30 "./lexyacc-code_lab3/calc3.l"
 return ELSE;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 31 "calc3.l"
+#line 31 "./lexyacc-code_lab3/calc3.l"
 return PRINT;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 32 "calc3.l"
+#line 32 "./lexyacc-code_lab3/calc3.l"
 return FACT;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 33 "calc3.l"
+#line 33 "./lexyacc-code_lab3/calc3.l"
 return GCD;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 34 "calc3.l"
+#line 34 "./lexyacc-code_lab3/calc3.l"
 return LNTWO;
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 36 "calc3.l"
+#line 36 "./lexyacc-code_lab3/calc3.l"
 ;       /* ignore whitespace */
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 38 "calc3.l"
+#line 38 "./lexyacc-code_lab3/calc3.l"
 yyerror("Unknown character");
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 39 "calc3.l"
+#line 39 "./lexyacc-code_lab3/calc3.l"
 ECHO;
 	YY_BREAK
-#line 848 "lex.yy.c"
+#line 849 "./lexyacc-code_lab3/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1849,7 +1850,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 39 "calc3.l"
+#line 39 "./lexyacc-code_lab3/calc3.l"
 
 int yywrap(void) {
     return 1;

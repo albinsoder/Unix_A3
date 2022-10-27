@@ -18,7 +18,7 @@ compile:
 
 build:
 	gcc $(DIR_lex)/y.tab.o $(DIR_lex)/lex.yy.o $(DIR_lex)/calc3a.c -o $(DIR_bin)/calc3a.exe
-	gcc $(DIR_lex)/y.tab.o $(DIR_lex)/lex.yy.o $(DIR_lex)/calc3b.c -o $(DIR_bin)/calc3b.exe
+	gcc $(DIR_lex)/y.tab.o $(DIR_lex)/lex.yy.o $(DIR_lex)/calc3i.c -o $(DIR_bin)/calc3i.exe
 	gcc $(DIR_lex)/y.tab.o $(DIR_lex)/lex.yy.o $(DIR_lex)/calc3g.c -o $(DIR_bin)/calc3g.exe
 
 clean:

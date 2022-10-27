@@ -1,4 +1,4 @@
 #!/bin/sh
-input = "$1" # File input
+echo "Not implemented!"
 
 

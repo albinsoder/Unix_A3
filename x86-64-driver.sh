@@ -6,6 +6,7 @@ calcPwd="./testprogs/"
 assemblyDir="./assembly_files/"
 sExtension=".s"
 binDir="./bin/"
+testDir="./testprogs/"
 
 # Compile inputCalcFile.s to executable assembly program
 compileAss() {
@@ -14,16 +15,19 @@ compileAss() {
     gcc -no-pie -fPIC $assemblyDir -o $binDir
 }
 
-# Build all needed files and run calc3b.c with its test-file
+# Build all needed files and run calc3i.c with its test-file
 compileCalc3() {
+    # Path to inputCalcFile
+    testDir+=$input
     # Run makefile
     make all
-    echo "Make completed"
-    # Run calc3b.exe with testfile and output to ./assembly_files/inputCalcFile.s
-    ./bin/calc3b.exe < ./lexyacc-code_lab3/test >> ./assembly_files/gcd.s
+    # Run calc3i.exe with testfile and output to ./assembly_files/inputCalcFile.s
+    ./bin/calc3i.exe < $testDir >> $assemblyDir
     compileAss
+    echo "Assembly linked and ready"
 }
 
+# Write all data to the .s file, prologue, code and epilogue
 sFileWriter() {
     # Write the prologue to the assembly file
     cat << EOF >> $assemblyDir
@@ -31,15 +35,17 @@ sFileWriter() {
 sum:	.quad	0
 a:      .quad   0
 b:      .quad   0
+i:      .quad   0
 format: .ascii "Result: %d\n"  
 	.text
 	.global	main
 main:
 EOF
-    # Compile calc3b.c with input calc-file into input.s
+    # Compile calc3i.c with input calc-file into input.s
     compileCalc3
 # Append epilogue to input.s
 cat << EOF >> $assemblyDir
+    leave
 	ret
 EOF
     # Close file descriptor
@@ -51,21 +57,18 @@ EOF
 sFileCreator() {
     assemblyDir+=$input # ./assembly_files/input.calc
     assemblyDir=${assemblyDir/.calc/$sExtension} # ./assembly_files/input.s
-    echo "$assemblyDir"
     if [ -f $assemblyDir ] # If file exists, remove it
     then
         rm $assemblyDir
-        echo "Removed $assemblyDir"
     fi
-    # Create the assembly file
-    touch $assemblyDir
-    echo "Created new $assemblyDir"
+    touch $assemblyDir #Touch = create
     # Write assembly-code to the .s file
     sFileWriter
 
 }
 
 # If input file has .calc extension
+# -c: Output count of matching lines only
 if [ `echo $input | grep -c ".calc" ` -gt 0 ]
 then
     calcPwd+=$input

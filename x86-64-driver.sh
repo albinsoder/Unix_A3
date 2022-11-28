@@ -32,11 +32,12 @@ sFileWriter() {
     # Write the prologue to the assembly file
     cat << EOF >> $assemblyDir
 	.data
-sum:	.quad	0
 a:      .quad   0
 b:      .quad   0
 i:      .quad   0
-format: .ascii "Result: %d\n"  
+s:      .quad   0
+n:      .quad   0
+result: .ascii "Result: %d\n"  
 	.text
 	.global	main
 main:

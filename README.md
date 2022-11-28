@@ -1,7 +1,7 @@
 # Project3Unix
  Assembly
 
-Implemted extra functions:
+Implemented extra functions:
 GCD
 Fact
 

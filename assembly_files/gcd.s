@@ -1,15 +1,13 @@
 	.data
-sum:	.quad	0
 a:      .quad   0
 b:      .quad   0
 i:      .quad   0
-format: .ascii "Result: %d\n"  
+s:      .quad   0
+n:      .quad   0
+result: .ascii "Result: %d\n"  
 	.text
 	.global	main
 main:
-	push	%rbp
-	mov		%rsp, %rbp
-	sub		$16, %rsp
 	movq	$732, %rax
 	movq	%rax, a
 	movq	$2684, %rdx
@@ -38,9 +36,20 @@ L003:
 L001:
 	movq	a, %rax
 	movq	%rax, %rdx
-	leaq	format(%rip), %rdi
+	pushq	%rbp
+	leaq	result(%rip), %rdi
 	movq	%rdx, %rsi
 	xorq	%rax,  %rax
 	call	printf
+	popq	%rbp
+	movq	a, %rdx
+	movq	b, %rax
+	movq	%rax, %rdx
+	pushq	%rbp
+	leaq	result(%rip), %rdi
+	movq	%rdx, %rsi
+	xorq	%rax,  %rax
+	call	printf
+	popq	%rbp
     leave
 	ret

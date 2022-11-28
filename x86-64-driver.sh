@@ -20,7 +20,7 @@ compileCalc3() {
     # Path to inputCalcFile
     testDir+=$input
     # Run makefile
-    # make all
+    make all
     # Run calc3i.exe with testfile and output to ./assembly_files/inputCalcFile.s
     ./bin/calc3i.exe < $testDir >> $assemblyDir
     compileAss

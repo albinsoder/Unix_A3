@@ -25,15 +25,17 @@ int ex(nodeType *p) {
             con_count = 0;
 
         }
+        id_count = 0;
         break;
     case typeId:
         //switch between rax and rdx for id
-        if(!id_count){
+        if(id_count == 0){
             printf("\tmovq\t%c, %rax\n", p->id.i + 'a');   
-            id_count++;
+            id_count = 1;
 
-        }else if(id_count){
-            printf("\tmovq\t%c, %rdx\n", p->id.i + 'a');   
+        }else if(id_count == 1){
+            printf("\tmovq\t%c, %rdx\n", p->id.i + 'a');
+            // printf("movq\t%rdi\t%rax\n");
             id_count =0;
 
         }
@@ -94,9 +96,11 @@ int ex(nodeType *p) {
                 eq_count++;
             }else{
                 if(flag){
+
                     printf("\t%s\t%rdx, %rax\n", arg);
                     printf("\tmovq\t%rax, %c\n", p->opr.op[0]->id.i + 'a');
-                    flag=0;
+                    flag =0;
+
                 }else{
                     printf("\tmovq\t%rdx, %c\n", p->opr.op[0]->id.i + 'a');
 

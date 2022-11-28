@@ -4,7 +4,7 @@ b:      .quad   0
 i:      .quad   0
 s:      .quad   0
 n:      .quad   0
-result: .ascii "Result: %d\n"  
+result: .ascii "%d\n"  
 	.text
 	.global	main
 main:
@@ -15,7 +15,7 @@ L000:
 	movq	$0, %rdx
 	cmpq	%rax, %rdx
 	je	L001
-	movq	i, %rdx
+	movq	i, %rax
 	movq	%rax, %rdx
 	pushq	%rbp
 	leaq	result(%rip), %rdi
@@ -23,11 +23,10 @@ L000:
 	xorq	%rax,  %rax
 	call	printf
 	popq	%rbp
-	movq	i, %rax
+	movq	i, %rdx
 	movq	$1, %rax
 	subq	%rdx, %rax
 	movq	%rax, i
 	jmp	L000
 L001:
-    leave
-	ret
+    exit

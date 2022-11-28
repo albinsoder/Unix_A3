@@ -4,7 +4,7 @@ b:      .quad   0
 i:      .quad   0
 s:      .quad   0
 n:      .quad   0
-result: .ascii "Result: %d\n"  
+result: .ascii "%d\n"  
 	.text
 	.global	main
 main:
@@ -51,5 +51,4 @@ L001:
 	xorq	%rax,  %rax
 	call	printf
 	popq	%rbp
-    leave
-	ret
+    exit

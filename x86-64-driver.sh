@@ -34,15 +34,20 @@ b:      .quad   0
 i:      .quad   0
 s:      .quad   0
 n:      .quad   0
+t:      .quad   0
+d:      .quad   0
+
 result: .ascii "%d\n"  
 	.text
 	.global	main
 main:
+    pushq   %rbx
 EOF
     # Compile calc3i.c with input calc-file into input.s
     compileCalc3
 # Append epilogue to input.s
 cat << EOF >> $assemblyDir
+    popq    $ 0
     exit
 EOF
     # Close file descriptor

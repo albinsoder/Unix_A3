@@ -4,7 +4,6 @@ b:      .quad   0
 i:      .quad   0
 s:      .quad   0
 n:      .quad   0
-s:      .quad   0
 t:      .quad   0
 d:      .quad   0
 

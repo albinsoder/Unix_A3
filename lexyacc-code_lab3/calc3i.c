@@ -35,6 +35,7 @@ int ex(nodeType *p) {
             break;
         case IF:
             lbl1 = lbl;
+            // printf("L%03d:\n", lbl1 = lbl++);
             ex(p->opr.op[0]);
             if (p->opr.nops > 2) {
                 /* if else */
@@ -46,7 +47,7 @@ int ex(nodeType *p) {
                 printf("L%03d:\n", lbl2);
             } else {
                 /* if */
-                printf("\tjmp\tL%03d\n", lbl1 = lbl++);
+                // printf("\tjmp\tL%03d\n", lbl1 = lbl++);
                 ex(p->opr.op[1]);
                 printf("L%03d:\n", lbl1);
             }
@@ -79,29 +80,40 @@ int ex(nodeType *p) {
             break;
         case FACT:
             ex(p->opr.op[0]);
-            //move value to another register
-            // printf("\tmovq\t%rax, %rdi\n");
-            // //sub 1 to get next of fact
-            // printf("\tsubq\t$1, %rdi\n");
-            // //check if 0! = 1
-            // printf("\tcmpq\t$0, %rdi\n");
-            // //if 0!
-            // printf("\tjle\tzero%03d\n", lbl1 = lbl++);
-            // //else
-            // printf("\tjmp\tfact%03d\n", lbl1);
+            printf("\tpopq\t%c\n", p->opr.op[0]->id.i + 'a');
+            printf("\tpushq\t%c\n", p->opr.op[0]->id.i + 'a');
+            ex(p->opr.op[0]);
+            // printf("\tpushq\t%c\n", p->opr.op[0]->id.i + 'a');
 
-            // //fact loop, mult n1*n2 til n1=0
-            // printf("fact%03d:\n", lbl1);
-            // printf("\tcmpq\t$0, %rdi\n");
-            // printf("\tje\tprint%03d\n", lbl1);
-            // printf("\timulq\t%rdi, %rax\n");
-            // printf("\tsubq\t$1, %rdi\n");
-            // printf("\tjmp\tfact%03d\n", lbl1);
-            // //0!
-            // printf("zero%03d:\n", lbl1); 
-            // printf("\tmovq\t$1, %rax\n");
-            // //print
-            // printf("print%03d:\n", lbl1);
+            // printf("\tpopq\t%c\n", p->opr.op[0]->id.i + 'a');
+
+            // move value to another register
+            printf("\tpopq\t%r10\n");   
+            printf("\tpopq\t%r11\n");   
+            //sub 1 to get next of fact
+            printf("\tsubq\t$1, %r10\n");
+            //check if 0! = 1
+            printf("\tcmpq\t$0, %r10\n");
+            //if 0!
+            printf("\tjle\tzero%03d\n", lbl1 = lbl++);
+            //else
+            printf("\tjmp\tfact%03d\n", lbl1);
+            ex(p->opr.op[0]);
+
+            //fact loop, mult n1*n2 til n1=0
+            printf("fact%03d:\n", lbl1);
+
+            printf("\tcmpq\t$0, %r10\n");
+            printf("\tje\tprint%03d\n", lbl1);
+            printf("\timulq\t%r10, %r11\n");
+            printf("\tsubq\t$1, %r10\n");
+            printf("\tjmp\tfact%03d\n", lbl1);
+            //0!
+            printf("zero%03d:\n", lbl1); 
+            printf("\tmovq\t$1, %r11\n");
+            //print
+            printf("print%03d:\n", lbl1);
+            printf("\tpushq\t%r11\n");
             break;
 
         case LNTWO:
@@ -154,7 +166,7 @@ int ex(nodeType *p) {
                 printf("\tpopq\t%r11\n");      
                 printf("\tcmpq\t%r10, %r11\n"); 
                 printf("\tjle\tL%03d\n", lbl2 = lbl++);
-                break;
+                break;             
             case GE:    
                 printf("\tpopq\t%r10\n");   
                 printf("\tpopq\t%r11\n");      

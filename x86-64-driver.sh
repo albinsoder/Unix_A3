@@ -23,19 +23,24 @@ compileCalc3() {
     compileAss
     echo "Assembly linked and ready"
 }
+az=(a b c d e f g h i j k l m n o p q r s t u v w x y z)
 
 # Write all data to the .s file, prologue, code and epilogue
 sFileWriter() {
+
     # Write the prologue to the assembly file
     cat << EOF >> $assemblyDir
-	.data
-a:      .quad   0
-b:      .quad   0
-i:      .quad   0
-s:      .quad   0
-n:      .quad   0
-t:      .quad   0
-d:      .quad   0
+    .data
+EOF
+
+for i in ${az[@]}
+do 
+    cat << EOF >> $assemblyDir
+    $i:      .quad 0
+EOF
+done 
+
+cat << EOF >> $assemblyDir
 
 result: .ascii "%d\n"  
 	.text

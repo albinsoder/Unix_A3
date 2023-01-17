@@ -83,10 +83,7 @@ int ex(nodeType *p) {
             printf("\tpopq\t%c\n", p->opr.op[0]->id.i + 'a');
             printf("\tpushq\t%c\n", p->opr.op[0]->id.i + 'a');
             ex(p->opr.op[0]);
-            // printf("\tpushq\t%c\n", p->opr.op[0]->id.i + 'a');
-
-            // printf("\tpopq\t%c\n", p->opr.op[0]->id.i + 'a');
-
+            
             // move value to another register
             printf("\tpopq\t%r10\n");   
             printf("\tpopq\t%r11\n");   

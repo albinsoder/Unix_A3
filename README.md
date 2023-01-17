@@ -43,6 +43,14 @@ DONE - The compiler can't compile the "pi.calc" test file. This file should be p
 
 DONE - The "looptest.calc" do not produce the correct output. It outputs only 1s in a loop that never ends. 
 
-DONE - You should not add extra things to the outputs of the compiled programs. Meaning "gcd.calc" should output "244" two times. Nothing else. 
+DONE - 
 
 DONE - You should follow the basic folder structure as stated in the assignment instructions.
+
+DONE - Your symbol table is too small. You know from the instruction that the ".calc" language can only have single characters as variable names. Meaning you know the maximum number of variables in the language. 
+
+DONE - An internal test file was not able to be compiled.
+
+DONE - You have not implemented one of the three functions, which is a requirement for a passing grade (it is not enough just to use a previous value for "gcd". You need to implement the function in assembly).
+
+UNCHANGED - I needed to change your "calcPath" to the following: "./$input", for it to work correctly
